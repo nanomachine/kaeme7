@@ -50,7 +50,7 @@ class Problem < ActiveRecord::Base
                     :storage => :s3,
 					:url => "/assets/problems/:id/:style/:basename.:extension",  
 					:s3_credentials => "#{Rails.root}/config/s3.yml",
-					:bucket => "km7";
+					:bucket => "kaeme7";
 	else
   	has_attached_file :avatar, :styles => {:medium => "767x575", :thumb => "100x100#"},
   					:path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
