@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user.get_full_name) %>
 
 
 <div class="row-fluid fluid-box">
@@ -68,7 +68,7 @@
             <% end %>
             <input type="text" value= <%="#{@assigned}" %> class="yellowCircle" />
           </div>
-          <div class="box-small-title">Reportes Resueltos</div>
+          <div class="box-small-title">Reportes Asignados</div>
         </div>
       </div>
       <div class="box span4 circle-box">                  

@@ -1,4 +1,4 @@
-<% provide(:title, "List details") %>
+<% provide(:title, "Lista Detalles") %>
 
 <%= will_paginate @problems%>
 <body>
@@ -9,9 +9,9 @@
           <h2 class="h2-show"><%=@list.description%></h2>
           <p class= "center">
             <% if @list.active %>
-              <span class="label label-success label-hero-unit">Activa</span>
+              <span class="label label-success label-hero-unit">@list.get_status</span>
             <% else %>
-              <span class="label label-hero-unit">Cerrada</span>
+              <span class="label label-hero-unit">@list.get_status</span>
             <% end %> 
           </p>  
         </div>

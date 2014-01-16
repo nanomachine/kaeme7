@@ -22,7 +22,7 @@ field = styles.add_style :border => { :style => :thin, :color => "00" },
 #photo = styles.add_style :border => { :style => :thin, :color => "00" }
 
 
-wb.add_worksheet(name: 'List Summary') do |sheet|
+wb.add_worksheet(name: 'Resumen de Lista') do |sheet|
 
 #Preping cell format------------------------------------------
 	sheet.column_widths 4, 15, 20, 15, 10 ,11, 10, 10, 10, 12, 10
@@ -38,14 +38,14 @@ wb.add_worksheet(name: 'List Summary') do |sheet|
     sheet.merge_cells("H3:K3")
 
 # Information Header---------------------------------------------
-    sheet.add_row ["List #" + @list.id.to_s + ":" + @list.name], :style => [col_header, col_header, col_header]
-    sheet.add_row ["Description:", nil,  @list.description], :style => [label, label, cent_field]
-    sheet.add_row ["Reports:", nil, @list.problems.count], :style => [label, label, cent_field]
-    sheet.add_row ["Active?:", nil, @list.active], :style => [label, label, cent_field]
-    sheet.add_row ["Created by:", nil, @list.get_owner_name], :style => [label, label, cent_field]
-    sheet.add_row ["Created on:", nil, @list.created_at.strftime(" %b.%d %Y @ %T")], :style => [label, label, cent_field]
+    sheet.add_row ["Lista #" + @list.id.to_s + ":" + @list.name], :style => [col_header, col_header, col_header]
+    sheet.add_row ["Descripción:", nil,  @list.description], :style => [label, label, cent_field]
+    sheet.add_row ["Reportes:", nil, @list.problems.count], :style => [label, label, cent_field]
+    sheet.add_row ["Estado:", nil, @list.get_status], :style => [label, label, cent_field]
+    sheet.add_row ["Creada por:", nil, @list.get_owner_name], :style => [label, label, cent_field]
+    sheet.add_row ["Creada en:", nil, @list.created_at.strftime(" %b.%d %Y @ %T")], :style => [label, label, cent_field]
    	sheet.add_row
-	sheet.add_row ["#", "Description:", "Address:", "Latitude:", "Longitude:", "Type:", "Priority:", "Status:", "Created on:", "Reporter:"], :style => [col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header]
+	sheet.add_row ["#", "Descripción:", "Dirección:", "Latitud:", "Longitud:", "Tipo:", "Prioridad:", "Estado:", "Creado en:", "Reportero:"], :style => [col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header, col_header]
 
 # Entity Logo and header--------------------------------------------
 
