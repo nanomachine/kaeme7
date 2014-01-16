@@ -3,30 +3,30 @@
 
 <div id="menu-bar-content">	
 	<div class="row-fluid menu-bar-fixed fluid-box">
-		<a href="/dashboard" class="quick-button span2">
+		<a href="/estadisticas" class="quick-button span2">
 			<i class="fa-icon-dashboard"></i>
 			<p>Estadísticas</p>
 		</a>
 				
-		<a href="/users" class="quick-button span2">
+		<a href="/usuarios" class="quick-button span2">
 			<i class="fa-icon-group"></i>
 			<p>Usuarios</p>
 			<span class="notification"><%= User.count %></span>
 		</a>
 	
-		<a href="/reports" class="quick-button span2">
+		<a href="/reportes" class="quick-button span2">
 			<i class="fa-icon-eye-open"></i>
 			<p>Reportes</p>
 			<span class="notification green"><%= Problem.count %></span>
 		</a>
 
-		<a href="/lists" class="quick-button span2">
+		<a href="/listas" class="quick-button span2">
 			<i class="fa-icon-th-list"></i>
 			<p>Listas</p>
 			<span class="notification red"><%= List.count %></span>
 		</a>
 		
-		<a href="/reports/map" class="quick-button span2">
+		<a href="/reportes/mapa" class="quick-button span2">
 			<i class="fa-icon-globe"></i>
 			<p>Mapa</p>
 		</a>

@@ -31,28 +31,29 @@ end
 #get "prob_comment/create"
 #get "prob_comment_controller/create"
 
-  match '/new_user',  to: 'users#new'
-  match '/users', to: 'users#index'
-  match '/edit_user', to: 'users#edit'
-  
+    match '/new_user',  to: 'users#new'
+    match '/edit_user', to: 'users#edit'
 
-  match '/reports', to: 'problems#index'
-  match '/report', to: 'problems#new'
-  get '/problems/map'
-  match '/reports/map', to: 'problems#map'
+  match '/usuarios', to: 'users#index'
 
+    match '/report', to: 'problems#new'
 
-  match '/lists', to: 'lists#index'
-  match '/new_list', to: 'lists#new'
+  match '/reportes', to: 'problems#index'
+  match '/reportes/mapa', to: 'problems#map'
+
+    match '/new_list', to: 'lists#new'
+
+  match '/listas', to: 'lists#index'
+
 
   devise_scope :user do
   root to: "devise/sessions#new"
   end
 
-  match '/help',    to: 'static_pages#help'
-  match '/about_us',   to: 'static_pages#about'
-  match '/contact_us', to: 'static_pages#contact'
-  match '/dashboard', to: 'static_pages#admin_dashboard'
+  match '/ayuda',    to: 'static_pages#help'
+  match '/nosotros',   to: 'static_pages#about'
+  match '/contacto', to: 'static_pages#contact'
+  match '/estadisticas', to: 'static_pages#admin_dashboard'
 
   match "/problems/add_new_comment" => "problems#add_new_comment", :as => "add_new_comment_to_problems", :via => [:post]
   match "/problems/:id/delete_comment" => "problems#delete_comment", :as => "delete_comment_from_problems", :via => [:delete]
