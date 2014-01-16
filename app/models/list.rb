@@ -26,9 +26,9 @@ class List < ActiveRecord::Base
 
 	def get_status
 		if self.active
-			return "Active"
+			return "Activa"
 		else
-			return "Closed"
+			return "Cerrada"
 		end
 	end
 end

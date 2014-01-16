@@ -5,11 +5,11 @@
 		<!--div class="box span10" onTablet="span10" onDesktop="span10"-->
 		<div class="box span12">
 			<div class="box-header">
-				<h2><i class="icon-user"></i><span class="break"></span>Users</h2>
+				<h2><i class="icon-user"></i><span class="break"></span>Usuarios</h2>
 				<div class="box-icon">
 					<% if current_user.admin? %>
 						<%= link_to '#', class: 'btn btn-success btn-setting' do %>
-							<i class="icon-plus"></i> New User
+							<i class="icon-plus"></i> Usuario Nuevo
 						<% end %>
 					<% end %>
 				</div>
@@ -18,14 +18,14 @@
 				<table class="table table-striped table-bordered bootstrap-datatable datatable">
 				  <thead>
 					  <tr>
-					  	  <th>Picture</th>
-						  <th>Full Name</th>
-						  <th>Email Address</th>
-						  <th>Municipality</th>
-						  <th>Telephone</th>
-						  <th>Registered</th>
-						  <th>User Role</th>
-						  <th>Actions</th>
+					  	  <th>Foto</th>
+						  <th>Nombre</th>
+						  <th>Correo</th>
+						  <th>Municipio</th>
+						  <th>Teléfono</th>
+						  <th>Miembro desde</th>
+						  <th>Rol/th>
+						  <th>Opciones</th>
 					  </tr>
 				  </thead>   
 				  <tbody>
@@ -37,13 +37,7 @@
 							<td><%= user.municipality %></td>
 							<td><%= user.telnum %></td>
 							<td><%= user.created_at.strftime(" %b.%d %Y") %></td>
-							<td>
-								<% if user.admin? %>
-									Administrator
-								<% else %>
-									Reporter
-								<% end %>
-							</td>
+							<td><%= user.get_role %></td>
 	<!--Action buttons for user index table, Delete and More Info -->
 							<td class="center">
 								<%= link_to user, class: 'btn btn-info' do %>
@@ -51,7 +45,7 @@
 								<% end %>
 	<!-- If current user is admin and is NOT the user to be listed -->
 								<% if current_user.admin? && current_user.id != user.id %>
-									<%= link_to user, method: :delete, data: { confirm: "Delete this user?" }, class: 'btn btn-danger' do %>
+									<%= link_to user, method: :delete, data: { confirm: "¿Borrar este usuario" }, class: 'btn btn-danger' do %>
 										<i class="icon-trash icon-white"></i> 
 									<% end %>
 								<% end %>
@@ -70,12 +64,12 @@
 <div class="modal hide fade" id="myModal">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal"></button>
-		<h3>New User</h3>
+		<h3>Usuario Nuevo</h3>
 	</div>
 
 	<div class="modal-body">
 		<div class="control-group">
-				<label class="control-label" for="focusedInput">*First Name</label>
+				<label class="control-label" for="focusedInput">*Nombre</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :name %>
@@ -84,7 +78,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">*Last Name</label>
+				<label class="control-label" for="focusedInput">*LApellido</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :last_name %>
@@ -93,7 +87,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">*Email</label>
+				<label class="control-label" for="focusedInput">*Correo</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :email %>
@@ -102,7 +96,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">*Password</label>
+				<label class="control-label" for="focusedInput">*Contraseña</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.password_field :password %>
@@ -111,7 +105,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">*Confirm Password</label>
+				<label class="control-label" for="focusedInput">*Confirmar Contraseña</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.password_field :password_confirmation %>
@@ -120,7 +114,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">*Telephone</label>
+				<label class="control-label" for="focusedInput">*Teléfono</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :telnum %>
@@ -129,7 +123,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">Municipality</label>
+				<label class="control-label" for="focusedInput">Municipio</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.text_field :municipality %>
@@ -139,7 +133,7 @@
 
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">*Upload Picture</label>
+				<label class="control-label" for="focusedInput">*Subir foto</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.file_field :avatar %>
@@ -148,7 +142,7 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="focusedInput">*Administrator?</label>
+				<label class="control-label" for="focusedInput">*Administrador?</label>
 					<div class="controls">
 						<div class="input-xlarge focused" id="focusedInput" type="text">
 							<%= f.check_box(:admin) %>
@@ -157,8 +151,8 @@
 			</div>
 	<div class="modal-footer"> 
 		<small class="pull-left">* Are required fields.</small>
-		<a class="form-action btn" data-dismiss="modal">Close</a>
-		<a class="form-action"> <%= f.submit "Create", class: "btn btn-success" %> </a>
+		<a class="form-action btn" data-dismiss="modal">Salir</a>
+		<a class="form-action"> <%= f.submit "Crear", class: "btn btn-success" %> </a>
 	</div>
 </div>
 <% end %>
