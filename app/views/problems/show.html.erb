@@ -1,4 +1,4 @@
-<% provide(:title, "Report Details") %>
+<% provide(:title, "Detalles del Reporte") %>
 <html lang="en">
 
 
@@ -12,19 +12,19 @@
           <p class="center">
             <!--span class="label label-hero-unit"><%= @problem.get_prob_type %></span-->
             <% if @problem.status==3 %>
-              <span class="label label-success label-hero-unit">Resolved</span>
+              <span class="label label-success label-hero-unit">Resuelto</span>
             <% elsif @problem.status==2 %>
-              <span class="label label-info label-hero-unit">Assigned</span>
+              <span class="label label-info label-hero-unit">Asignado</span>
             <% else %>
-               <span class="label label-warning label-hero-unit">Pending</span>
+               <span class="label label-warning label-hero-unit">Pendiente</span>
            <% end %>
 
            <% if @problem.priority==3 %>
-              <span class="label label-danger label-hero-unit">High Priority</span>
+              <span class="label label-danger label-hero-unit">Alta Prioridad</span>
             <% elsif @problem.priority==2 %>
-              <span class="label label-warning label-hero-unit">Normal Priority</span>
+              <span class="label label-warning label-hero-unit">Prioridad Regular</span>
             <% else %>
-              <span class="label label-success label-hero-unit">Low Priority</span>
+              <span class="label label-success label-hero-unit">Baja Prioridad</span>
             <% end %>
           </p>
 
@@ -37,7 +37,7 @@
 <!-- ____________________________-Photo box _____________________________________________________    -->
       <div class="box span6">
         <div class="box-header">
-          <h2><i class="fa-icon-eye-open"></i><span class="break"></span>Photo</h2>
+          <h2><i class="fa-icon-eye-open"></i><span class="break"></span>Foto</h2>
           <div class="box-icon">
           </div>
         </div>
@@ -49,7 +49,7 @@
       <!-- Map box      -->
       <div class="box span6">
         <div class="box-header">
-          <h2><i class="fa-icon-globe"></i><span class="break"></span>Map</h2>
+          <h2><i class="fa-icon-globe"></i><span class="break"></span>Mapa</h2>
           <div class="box-icon">
 
           </div>
@@ -63,16 +63,16 @@
             <div class=" box span12 center">
             <h1 class="btn-group">
     <!-- Anybody can see the edit button, to correct details, last person who updates it is recorded -->
-              <%= link_to "#", class: "btn a-button btn-setting" do %><i class="icon-edit"></i> Edit Details
+              <%= link_to "#", class: "btn a-button btn-setting" do %><i class="icon-edit"></i> Editar Detalles
               <% end %>
     <!-- If the report is not in a list show button to add to a list else show button to resolve and button to see list. -->
               <% if !@problem.is_in_list? %>
     <!-- Show unresolve button if the report has been resolved but the containing list has been deleted -->
                 <% if @problem.status==3 && current_user.admin?%>
-                  <%= link_to problem_path(:problem => {:status => 1}), :method => :put, :confirm => "Are you sure?", class: "btn a-button btn-warning" do %><i class="icon-ban-circle"></i> Unresolve 
+                  <%= link_to problem_path(:problem => {:status => 1}), :method => :put, :confirm => "¿Está seguro que este reporte necesita atención?", class: "btn a-button btn-warning" do %><i class="icon-ban-circle"></i> Atender 
                   <% end %>
                 <% else %>
-                  <%= link_to "#", class: "btn btn-setting-second a-button btn-success" do %><i class="icon-plus"></i> Add report to list
+                  <%= link_to "#", class: "btn btn-setting-second a-button btn-success" do %><i class="icon-plus"></i> Añadir a lista
                    <% end %>
                  <% end %>
     <!-- We enter here if the report is currently contained in a list--> 
@@ -82,22 +82,22 @@
                 <% @list_owner = @cont_list.get_owner %>
     <!-- If the problem has not been resolved and the current user is the owner of the report or admin allow Resolve button functionality -->
                 <%if @problem.status != 3 && (current_user == @list_owner || current_user.admin?)%>
-                  <%= link_to problem_path(:problem => {:status => 3, :resolved_at => Time.now, :resolved_id => current_user.id}), :method => :put, :confirm => "Are you sure this report has been resolved?\nOnly an administrator can undo this action.", class: "btn a-button btn-success" do %><i class="icon-check"></i> Resolve
+                  <%= link_to problem_path(:problem => {:status => 3, :resolved_at => Time.now, :resolved_id => current_user.id}), :method => :put, :confirm => "¿Está seguro que se resolvió este reporte?\nSólo un administrador puede deshacer esta opción.", class: "btn a-button btn-success" do %><i class="icon-check"></i> Resolver
                   <% end %>
                 <% else %>
     <!-- If the report has been marked as resolved and the current user is the owner or admin enable Unresolve button functionality -->
                   <% if current_user.admin?%>
-                    <%= link_to problem_path(:problem => {:status => 2}), :method => :put, :confirm => "Are you sure?", class: "btn a-button btn-warning" do %><i class="icon-ban-circle"></i> Unresolve
+                    <%= link_to problem_path(:problem => {:status => 2}), :method => :put, :confirm => "¿Está seguro que este reporte necesita atención?", class: "btn a-button btn-warning" do %><i class="icon-ban-circle"></i> Atender
                     <% end %>
                   <% end %>
                 <% end %>
-                  <%= link_to @problem.get_containing_list, class: "btn a-button btn-info" do %><i class="icon-list-alt"></i> Go to list
+                  <%= link_to @problem.get_containing_list, class: "btn a-button btn-info" do %><i class="icon-list-alt"></i> Ver lista
                   <% end %>
               <% end %>
     <!-- Only the owner of the report or an administrator can see the delete button -->
               <% if (current_user.id == @problem.user_id || current_user.admin?) && @problem.status != 3 %>
-                <%= link_to @problems, method: :delete, data: { confirm: "Delete this report?" }, class: 'btn a-button btn-danger' do %>
-                  <i class="icon-trash"></i> Delete
+                <%= link_to @problems, method: :delete, data: { confirm: "¿Borrar este reporte?" }, class: 'btn a-button btn-danger' do %>
+                  <i class="icon-trash"></i> Borrar
                 <% end %>
               <% end %>
             </h1>
@@ -114,42 +114,42 @@
           <!--  Details Box     -->
           <div class="box span6 ">
             <div class="box-header">
-              <h2><i class="fa-icon-list"></i><span class="break"></span>History</h2>
+              <h2><i class="fa-icon-list"></i><span class="break"></span>Historial</h2>
 
             </div>
 
             <div class="box-content">
               <div class="row-fluid">
                 <div class="box span6">
-                  <h3>Reporter:</h3>
+                  <h3>Reportero:</h3>
                   <p><%= link_to @problem.get_owner_name, User.find(@problem.user_id)%></p>
   <!-- Only show these fields if contained in a list -->
                   <% if @cont_list %>
-                    <h3>Assigned to:</h3>
+                    <h3>Asignado a:</h3>
                     <p><%= @cont_list.get_owner_name %></p>
-                    <h3>List:</h3>
+                    <h3>Lista:</h3>
                     <p><%= @cont_list.name%>
                   <% end %>
   <!-- Only show this field if report has been resolved -->
                   <% if @problem.resolved_id != nil %>
-                    <h3>Resolved by:</h3>
+                    <h3>Resuelto por:</h3>
                     <p><%= User.find(@problem.resolved_id).name %> <%= User.find(@problem.resolved_id).last_name %></p>
                   <% end %>
                   </div>
 
                   <div class="box span6">
-                    <h3>Submitted on:</h3>
+                    <h3>Reportado en:</h3>
                     <p><%= @problem.created_at.strftime("%b.%d %Y @ %T") %></p>
   <!-- Only show this field if report has been assigned at some time -->
                     <% if @problem.assigned_at != nil %>
-                      <h3>Assigned on:</h3>
+                      <h3>Asignado en:</h3>
                       <p><%= @problem.assigned_at.strftime("%b.%d %Y @ %T") %></p>
                     <% end %>
-                    <h3>Updated on:</h3>
+                    <h3>Actualizado en:</h3>
                     <p><%= @problem.updated_at.strftime(" %b.%d %Y @ %T") %></p>
   <!-- Show resolved information even if the report has been marked again as unresolved to save the previous state of the report with time evidence and person responsible -->
                     <% if @problem.resolved_at != nil %>
-                      <h3>Resolved on:</h3>
+                      <h3>Resuelto en:</h3>
                       <p><%= @problem.resolved_at.strftime(" %b.%d %Y @ %T") %></p>
                     <% end %>
                   </div>
@@ -161,7 +161,7 @@
 
       <div class="box span6 ">
         <div class="box-header">
-          <h2><i class="icon-comment"></i><span class="break"></span>Comments</h2>
+          <h2><i class="icon-comment"></i><span class="break"></span>Comentarios</h2>
         </div>
         <div class="box-content">
           <!--Preparing comments for dispaly-->
@@ -204,7 +204,7 @@
          <%= form_tag "/problems/add_new_comment" do %>
          <%= hidden_field_tag "id", @problem.id %>
          <%= text_area :comment, :body, :size => "10x10" %>
-         <%= submit_tag "Post Comment" %>
+         <%= submit_tag "Comentar" %>
          <% end %>
        </div> 
      </div>    
@@ -219,13 +219,13 @@
   <div class="modal hide fade" id="myModal">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal"></button>
-      <h3>Edit Report</h3>
+      <h3>Editar Reporte</h3>
     </div>
 
     <div class="modal-body">
 
       <div class="control-group">
-        <label class="control-label" for="focusedInput">Title</label>
+        <label class="control-label" for="focusedInput">Título</label>
         <div class="controls">
           <div class="input-xlarge focused" id="focusedInput" type="text">
             <%= f.text_field :title, :placeholder => "Please provide a title..." %>
@@ -234,36 +234,36 @@
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="textarea2">Description</label>
+        <label class="control-label" for="textarea2">Descripción</label>
         <div class="controls">
           <div class="input-xlarge focused" id="focusedInput" type="text">
-            <%= f.text_area :description, :placeholder => "Provide a short description of the situation and/or location...", size: "10x6" %>
+            <%= f.text_area :description, :placeholder => "Provea una descripción corta del lugar o situación...", size: "10x6" %>
           </div>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="focusedInput">Type</label>
+        <label class="control-label" for="focusedInput">Tipo</label>
         <div class="controls">
           <div class="input-xlarge focused" id="focusedInput" type="text">
-            <%= f.select :ptype, [["Pothole", 1], ["Water pipe", 2], ["Electric cable", 3], 
-            ["Light post", 4], ["Debris on road", 5], ["Vandalism", 6], ["Manhole cover", 7], ["Other", 8]] %>        
+            <%= f.select :ptype, [["Hueco", 1], ["Tubería de agua", 2], ["Tendido eléctrico", 3], 
+            ["Luminaria", 4], ["Escombros", 5], ["Vandalismo", 6], ["Alcantarillado", 7], ["Otro", 8]] %>        
           </div>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="focusedInput">Priority</label>
+        <label class="control-label" for="focusedInput">Prioridad</label>
         <div class="controls">
           <div class="input-xlarge focused" id="focusedInput" type="text">
-            <%= f.select :priority, [["Low", 1], ["Medium", 2], ["High", 3]] %>
+            <%= f.select :priority, [["Baja", 1], ["Regular", 2], ["Alta", 3]] %>
           </div>
         </div>
       </div>
     </div>
     <div class="modal-footer"> 
-      <a class="form-action btn" data-dismiss="modal">Close</a>
-      <a class="form-action"> <%= f.submit "Update", class: "btn btn-success" %> </a>
+      <a class="form-action btn" data-dismiss="modal">Cerrar</a>
+      <a class="form-action"> <%= f.submit "Actualizar", class: "btn btn-success" %> </a>
     </div>
   </div>
   <% end %>
@@ -275,16 +275,16 @@
   <div class="modal hide fade" id="mySecondModal">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal"></button>
-      <h3>Choose a list</h3>
+      <h3>Escoger lista</h3>
     </div>
     <div class="modal-body">
       <table class="table table-condensed datatable">
         <thead>
           <tr>
-            <th>List #</th>
-            <th>Name</th>
-            <th>Date Created</th>
-            <th>Actions</th>
+            <th>Lista #</th>
+            <th>Título</th>
+            <th>Fecha creada</th>
+            <th>Opciones</th>
           </tr>
         </thead>     
         <tbody>
@@ -297,7 +297,7 @@
                 <!--Action buttons for last column of list index table, Delete and More Info -->
                 <td class="center">
                   <%= link_to add_problem_list_path(list: list, id: list.id, problem_id: @problem.id), class: 'btn btn-mini btn-success', method: :put do %>
-                  <i>Add to list</i> 
+                  <i>Añadir a lista</i> 
                   <% end %>
                 </td>
               </tr>
@@ -314,7 +314,7 @@
     function message_infowindow(){
       var unique_id = $.gritter.add({
         // (string | mandatory) the heading of the notification
-        title: 'Click on the map marker for location details...',
+        title: 'Haga click en el marcador para ver más información de la localización...',
         // (string | mandatory) the text inside the notification
         text: ' ',
         // (string | optional) the image to display on the left
