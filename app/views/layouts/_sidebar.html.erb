@@ -5,35 +5,35 @@
 	<div class="row-fluid menu-bar-fixed fluid-box">
 		<a href="/dashboard" class="quick-button span2">
 			<i class="fa-icon-dashboard"></i>
-			<p>Dashboard</p>
+			<p>Estadísticas</p>
 		</a>
 				
 		<a href="/users" class="quick-button span2">
 			<i class="fa-icon-group"></i>
-			<p>Users</p>
+			<p>Usuarios</p>
 			<span class="notification"><%= User.count %></span>
 		</a>
 	
 		<a href="/reports" class="quick-button span2">
 			<i class="fa-icon-eye-open"></i>
-			<p>Reports</p>
+			<p>Reportes</p>
 			<span class="notification green"><%= Problem.count %></span>
 		</a>
 
 		<a href="/lists" class="quick-button span2">
 			<i class="fa-icon-th-list"></i>
-			<p>Lists</p>
+			<p>Listas</p>
 			<span class="notification red"><%= List.count %></span>
 		</a>
 		
 		<a href="/reports/map" class="quick-button span2">
 			<i class="fa-icon-globe"></i>
-			<p>Map</p>
+			<p>Mapa</p>
 		</a>
 
 		<a href="/users/<%= current_user.id %>"class="quick-button span2">
 			<i class="fa-icon-user"></i>
-			<p>My Profile</p>
+			<p>Mi Perfil</p>
 		</a>
 
 		<!--a class="quick-button span2">

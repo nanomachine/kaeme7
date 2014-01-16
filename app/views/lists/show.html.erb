@@ -9,9 +9,9 @@
           <h2 class="h2-show"><%=@list.description%></h2>
           <p class= "center">
             <% if @list.active %>
-              <span class="label label-success label-hero-unit">Active</span>
+              <span class="label label-success label-hero-unit">Activa</span>
             <% else %>
-              <span class="label label-hero-unit">Closed</span>
+              <span class="label label-hero-unit">Cerrada</span>
             <% end %> 
           </p>  
         </div>
@@ -27,16 +27,16 @@
           <div class="box-icon">
             <div class="btn-group">
               <%= link_to list_path(format: "xlsx"), class: 'btn btn-info a-button' do %>
-              <i class="icon-download-alt icon-white"></i> Export to .xls
+              <i class="icon-download-alt icon-white"></i> Exportar a .xls
               <% end %>
     <!-- Only have the ability to delete or edit the list if the user is an administrator or the owner of the list -->
               <% if current_user.admin? || current_user.id==@list.user_id %>
                 <%= link_to '#', class: 'btn btn-success btn-setting a-button' do %>
-                  <i class="icon-edit icon-white"></i> Edit List
+                  <i class="icon-edit icon-white"></i> Editar Lista
                 <% end %>
 
-                <%= link_to @list, method: :delete, data: { confirm: "Delete this list?" }, class: 'btn btn-danger a-button' do %>
-                  <i class="fa-icon-minus"></i> Delete List
+                <%= link_to @list, method: :delete, data: { confirm: "¿Borrar este lista?" }, class: 'btn btn-danger a-button' do %>
+                  <i class="fa-icon-minus"></i> Borrar Lista
                 <% end %>
               <% end %>
             </div>
@@ -50,16 +50,16 @@
           <table class="table table-striped table-bordered bootstrap-datatable datatable">
             <thead>
               <tr>
-                <th>Report</th>
-                <th>Picture</th>
-                <th>Address</th>
-                <th>Description</th>        
-                <th>Type</th>
-                <th>Priority</th>
-                <th>Status</th>
-                <th>Date submitted</th>
-                <th>Reporter</th>
-                <th>Actions</th>
+                <th>Reporte</th>
+                <th>Foto</th>
+                <th>Dirección</th>
+                <th>Descripción</th>        
+                <th>Tipo</th>
+                <th>Prioridad</th>
+                <th>Estado</th>
+                <th>Fecha reportado</th>
+                <th>Reportero</th>
+                <th>Opciones</th>
               </tr>
             </thead>   
             <tbody>
@@ -78,8 +78,8 @@
       <!-- Only display the option to remove reports from a list if current user is owner or admin
         Make it impossible to remove a resolved report from the list -->
                     <% if problem.status != 3 && (current_user.admin? || current_user.id == @list.user_id)  %>
-                      <%= link_to remove_problem_list_path(list: @list,  problem_id: problem.id), class: 'btn btn-mini btn-danger', method: :delete, :confirm => 'Are you sure you wish to remove this report from the list?' do %>
-                        <i>Remove</i> 
+                      <%= link_to remove_problem_list_path(list: @list,  problem_id: problem.id), class: 'btn btn-mini btn-danger', method: :delete, :confirm => '¿Está seguro que quiere remover el reporte de la lista?' do %>
+                        <i>Remover</i> 
                       <% end %>
                     <% end %>
                   </td>
@@ -103,12 +103,12 @@
 <div class="modal hide fade" id="myModal">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal"></button>
-    <h3>Edit List Details</h3>
+    <h3>Editar Detalles</h3>
   </div>
 
   <div class="modal-body">
     <div class="control-group">
-      <label class="control-label" for="focusedInput">List Name</label>
+      <label class="control-label" for="focusedInput">Título</label>
       <div class="controls">
         <div class="input-xlarge focused" id="focusedInput" type="text">
           <%= f.text_field :name %>        
@@ -117,7 +117,7 @@
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="focusedInput">Description</label>
+      <label class="control-label" for="focusedInput">Descripción</label>
       <div class="controls">
         <div class="input-xlarge focused" id="focusedInput" type="text">
           <%= f.text_area :description, size: "10x6"%>
@@ -126,7 +126,7 @@
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="focusedInput">Active?</label>
+      <label class="control-label" for="focusedInput">Activa?</label>
       <div class="controls">
         <div class="input-xlarge focused" id="focusedInput" type="text">
           <%= f.check_box(:active) %>
@@ -135,8 +135,8 @@
     </div>
   </div>
   <div class="modal-footer"> 
-    <a class="form-action btn" data-dismiss="modal">Close</a>
-    <a class="form-action"> <%= f.submit "Update", class: "btn btn-success" %> </a>
+    <a class="form-action btn" data-dismiss="modal">Salir</a>
+    <a class="form-action"> <%= f.submit "Actualizar", class: "btn btn-success" %> </a>
   </div>
 </div>
 <% end %>

@@ -9,11 +9,11 @@
 
 
               <li id= "fat-menu">
-                <%=link_to "Welcome back, " + current_user.name , current_user %>
+                <%=link_to "Bienvenido, " + current_user.name , current_user %>
               </li>
 
               <li id= "fat-menu">
-                  <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
+                  <%= link_to "Salir", destroy_user_session_path, method: "delete" %>
               </li>
           <% else %>
             <!--li id= "fat-menu">
