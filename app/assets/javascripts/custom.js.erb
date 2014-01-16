@@ -257,7 +257,7 @@ function template_functions(){
 			"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
 			"sPaginationType": "bootstrap",
 			"oLanguage": {
-			"sLengthMenu": "_MENU_ records per page"
+			"sLengthMenu": "_MENU_ records por pagina"
 			}
 		} );
 	$('.btn-close').click(function(e){
@@ -1101,9 +1101,9 @@ function charts() {
 		function plotWithOptions() {
 			$.plot($("#stackchart"), 
 				[ 
-					{ label: "Pending", data: d1},
-					{ label: "Assigned", data: d2},
-					{ label: "Resolved", data: d3},
+					{ label: "Pendiente", data: d1},
+					{ label: "Asignado", data: d2},
+					{ label: "Resuelto", data: d3},
 
 				],{
 				series: {
@@ -1133,13 +1133,13 @@ function charts() {
 
 	/* ---------- Pie chart ---------- */
 	var data = [
-	{ label: "Pothole",  data: <%= "gon.holes" %> },
-	{ label: "Water Pipe",  data: <%= "gon.water" %>},
-	{ label: "Electric Cable",  data: <%= "gon.electric" %>},
-	{ label: "Light Post",  data: <%= "gon.light" %>},
-	{ label: "Road Debris",  data: <%= "gon.debris" %>},
-	{ label: "Vandalism",  data: <%= "gon.vandalism" %>},
-	{ label: "Manhole cover",  data: <%= "gon.manhole" %>}
+	{ label: "Hueco",  data: <%= "gon.holes" %> },
+	{ label: "Tuberia de agua",  data: <%= "gon.water" %>},
+	{ label: "Tendido electrico",  data: <%= "gon.electric" %>},
+	{ label: "Luminarias",  data: <%= "gon.light" %>},
+	{ label: "Escombros",  data: <%= "gon.debris" %>},
+	{ label: "Grafiti",  data: <%= "gon.vandalism" %>},
+	{ label: "Alcantarillado",  data: <%= "gon.manhole" %>}
 	];
 	
 	if($("#piechart").length)

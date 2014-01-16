@@ -123,47 +123,47 @@ class Problem < ActiveRecord::Base
 	def get_prob_type
 	    case self.ptype
 	    when 1
-	       "Pothole"
+	       "Hueco"
 	    when 2
-	       "Water pipe"
+	       "Tuberia de agua"
 	    when 3
-	       "Electric cable"
+	       "Tendido electrico"
 	    when 4
-	       "Light post"
+	       "Luminaria"
 	    when 5
-	       "Debris in road"
+	       "Escombros"
 	    when 6
-	       "Vandalism"
+	       "Vandalismo"
 	    when 7
-	       "Manhole cover"
+	       "Alcantarillado"
 	    else
-	       "Unspecified"
+	       "Otro"
 	    end
 	 end
 
 	def get_prob_status
 		case self.status
 		when 1
-	       "Pending"
+	       "Pendiente"
 	    when 2
-	       "Assigned"
+	       "Asignado"
 	    when 3
-	       "Resolved"
+	       "Resuelto"
 	    else
-	       "Unspecified"
+	       "Otro"
 	    end
 	end
 
 	def get_prob_priority
 		case self.priority
 		when 1
-	       "Low"
+	       "Baja"
 	    when 2
-	       "Normal"
+	       "Regular"
 	    when 3
-	       "High "
+	       "Alta "
 	    else
-	       "Unspecified"
+	       "Otro"
 	    end
 	end
 

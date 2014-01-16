@@ -91,9 +91,9 @@ class User < ActiveRecord::Base
   def get_role
 
     if self.admin
-      return "Administrator"
+      return "Administrador"
     else
-      return "Reporter"
+      return "Reportero"
     end
   end
  
