@@ -9,9 +9,9 @@
           <h2 class="h2-show"><%=@list.description%></h2>
           <p class= "center">
             <% if @list.active %>
-              <span class="label label-success label-hero-unit">@list.get_status</span>
+              <span class="label label-success label-hero-unit"><%= @list.get_status %></span>
             <% else %>
-              <span class="label label-hero-unit">@list.get_status</span>
+              <span class="label label-hero-unit"><%= @list.get_status %></span>
             <% end %> 
           </p>  
         </div>
@@ -78,7 +78,7 @@
       <!-- Only display the option to remove reports from a list if current user is owner or admin
         Make it impossible to remove a resolved report from the list -->
                     <% if problem.status != 3 && (current_user.admin? || current_user.id == @list.user_id)  %>
-                      <%= link_to remove_problem_list_path(list: @list,  problem_id: problem.id), class: 'btn btn-mini btn-danger', method: :delete, :confirm => '¿Está seguro que quiere remover el reporte de la lista?' do %>
+                      <%= link_to remove_problem_list_path(list: @list,  problem_id: problem.id), class: 'btn btn-mini btn-danger', method: :delete, :confirm => '¿Remover el reporte de la lista?' do %>
                         <i>Remover</i> 
                       <% end %>
                     <% end %>

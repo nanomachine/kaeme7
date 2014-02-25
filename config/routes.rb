@@ -1,4 +1,5 @@
 Km7::Application.routes.draw do
+  
 devise_for :users
 #constraints :protocol => "https" do
 #  devise_for :users
@@ -8,6 +9,7 @@ devise_for :users
 
 resources :problems
 resources :users
+resources :report_types
 resource :user, only: [:show] do
   collection do
     put 'update_password'
@@ -31,18 +33,14 @@ end
 #get "prob_comment/create"
 #get "prob_comment_controller/create"
 
-    match '/new_user',  to: 'users#new'
-    match '/edit_user', to: 'users#edit'
-
+  match '/new_user',  to: 'users#new'
+  match '/edit_user', to: 'users#edit'
   match '/usuarios', to: 'users#index'
-
-    match '/report', to: 'problems#new'
-
+  match '/report', to: 'problems#new'
   match '/reportes', to: 'problems#index'
   match '/reportes/mapa', to: 'problems#map'
-
-    match '/new_list', to: 'lists#new'
-
+  match '/reportes_tipos', to: 'report_types#index'
+  match '/new_list', to: 'lists#new'
   match '/listas', to: 'lists#index'
 
 

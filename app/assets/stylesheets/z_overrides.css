@@ -369,3 +369,7 @@ letter-spacing: 0px;
 .form-actions{
 	border-bottom: 1px solid #e5e5e5;
 }
+
+.row-fluid .span2 {
+width: 12.45%;
+}

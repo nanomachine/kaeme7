@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819133604) do
+ActiveRecord::Schema.define(:version => 20140225142608) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -70,13 +70,12 @@ ActiveRecord::Schema.define(:version => 20130819133604) do
     t.integer  "resolved_id"
   end
 
-  create_table "problems_lists", :id => false, :force => true do |t|
-    t.integer "problem_id"
-    t.integer "list_id"
+  create_table "report_types", :force => true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "problems_lists", ["list_id"], :name => "index_problems_lists_on_list_id"
-  add_index "problems_lists", ["problem_id"], :name => "index_problems_lists_on_problem_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
