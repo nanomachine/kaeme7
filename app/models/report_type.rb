@@ -1,9 +1,10 @@
 class ReportType < ActiveRecord::Base
-	has_and_belongs_to_many :problems
+	#has_and_belongs_to_many :problems
 
   	attr_accessible :category, :name, :avatar
 	validates(:name, presence: true, uniqueness: true)
 
+	#https://github.com/thoughtbot/paperclip/wiki/Attachment-downloaded-from-a-URL
 	attr_reader :avatar_remote_url
 
 	# Where to store the report_type marker depending on the environment

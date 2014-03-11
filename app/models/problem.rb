@@ -19,7 +19,7 @@ class Problem < ActiveRecord::Base
 #		:assigned_at, :resolved_at, :resolved_id]
 	belongs_to :user
 	has_and_belongs_to_many :lists
-	has_and_belongs_to_many :report_types
+	#has_and_belongs_to_many :report_types
 
 	acts_as_commentable
 
