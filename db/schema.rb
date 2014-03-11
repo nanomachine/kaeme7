@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140225142608) do
+ActiveRecord::Schema.define(:version => 20140311123249) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -73,9 +73,22 @@ ActiveRecord::Schema.define(:version => 20140225142608) do
   create_table "report_types", :force => true do |t|
     t.string   "name"
     t.string   "category"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
+
+  create_table "report_types_problems", :id => false, :force => true do |t|
+    t.integer  "report_type_id"
+    t.integer  "problem_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "report_types_problems", ["report_type_id", "problem_id"], :name => "by_report_type_and_problem", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "name"
