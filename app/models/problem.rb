@@ -18,8 +18,8 @@ class Problem < ActiveRecord::Base
 #		:priority, :status, :created_at, :updated_at, :address, :municipality, :user_id, 
 #		:assigned_at, :resolved_at, :resolved_id]
 	belongs_to :user
-	belongs_to :report_type
 	has_and_belongs_to_many :lists
+	has_and_belongs_to_many :report_types
 
 	acts_as_commentable
 
