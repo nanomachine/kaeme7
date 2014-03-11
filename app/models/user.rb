@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :problems
   has_many :lists
 
+  #https://github.com/thoughtbot/paperclip/wiki/Attachment-downloaded-from-a-URL
   attr_reader :avatar_remote_url
   
 	attr_accessible :name, :last_name, :email, :telnum, :municipality, :password, :password_confirmation, :admin, :avatar, :remember_me

@@ -23,6 +23,7 @@ class Problem < ActiveRecord::Base
 
 	acts_as_commentable
 
+	#https://github.com/thoughtbot/paperclip/wiki/Attachment-downloaded-from-a-URL
 	attr_reader :avatar_remote_url
 
 	#Mapping column information to gmaps marker
