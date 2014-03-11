@@ -81,15 +81,6 @@ ActiveRecord::Schema.define(:version => 20140311123249) do
     t.datetime "avatar_updated_at"
   end
 
-  create_table "report_types_problems", :id => false, :force => true do |t|
-    t.integer  "report_type_id"
-    t.integer  "problem_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "report_types_problems", ["report_type_id", "problem_id"], :name => "by_report_type_and_problem", :unique => true
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
