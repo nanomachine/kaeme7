@@ -1,7 +1,7 @@
 class ReportType < ActiveRecord::Base
-	#has_and_belongs_to_many :problems
+	has_many :problems
 
-  	attr_accessible :category, :name, :avatar
+  attr_accessible :category, :name, :avatar
 	validates(:name, presence: true, uniqueness: true)
 
 	#https://github.com/thoughtbot/paperclip/wiki/Attachment-downloaded-from-a-URL

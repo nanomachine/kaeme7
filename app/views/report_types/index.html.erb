@@ -39,7 +39,7 @@
 						<% @report_types.each do |report_type| %>
 						<tr>
 							<td><%= report_type.id %></td>
-							<td><%= link_to image_tag(report_type.avatar.url(:thumb)), report_type %> </td>
+							<td><%= image_tag(report_type.avatar.url(:thumb)) %> </td>
 							<td><%= report_type.name %></td>
 							<td><%= report_type.created_at.strftime(" %b.%d %Y") %></td>
 							<!--Action buttons for list index table, Delete and More Info -->

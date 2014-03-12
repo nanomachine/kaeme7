@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140311123249) do
+ActiveRecord::Schema.define(:version => 20140311144833) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20140311123249) do
     t.datetime "assigned_at"
     t.datetime "resolved_at"
     t.integer  "resolved_id"
+    t.integer  "report_type_id"
   end
 
   create_table "report_types", :force => true do |t|

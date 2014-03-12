@@ -19,7 +19,7 @@ class Problem < ActiveRecord::Base
 #		:assigned_at, :resolved_at, :resolved_id]
 	belongs_to :user
 	has_and_belongs_to_many :lists
-	#has_and_belongs_to_many :report_types
+	belongs_to :report_type
 
 	acts_as_commentable
 
@@ -32,7 +32,7 @@ class Problem < ActiveRecord::Base
                   :msg => "We're sorry, not even google can find that address, please try again."
 
 	attr_accessible :user_id, :title, :latitude, :longitude, :ptype, :description, :avatar, :address, 
-	:municipality, :status, :priority, :assigned_at, :resolved_at, :resolved_id
+	:municipality, :status, :priority, :assigned_at, :resolved_at, :resolved_id, :report_type_id
 
 	#The following must be present for the report to be worth anything,
 	#Title validation is commented because mobile app still does not provide one and validation would prevent upload.
@@ -42,6 +42,8 @@ class Problem < ActiveRecord::Base
 	validates(:latitude, presence: true)
 	validates(:longitude, presence: true)
 	validates(:ptype, presence: true)
+	#validates(:report_type_id, presence: true)
+
 
 
 	#Determine where to store image related to report, in production
