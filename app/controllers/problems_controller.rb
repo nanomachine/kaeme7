@@ -42,6 +42,12 @@ class ProblemsController < ApplicationController
    #@geocoded = Gmaps4rails.geocode(@problem.address)
    #puts @geocoded
 
+# This is to create the association for the report_type
+    if ReportType.exists?(@problem.report_type_id)
+      @report_type = ReportType.find(@problem.report_type_id)
+      @problem.report_type =  @report_type
+    end
+
 #When report is first created, its status is initially Unassigned, hence it is set to 1
     @problem.status = 1
     if @problem.save

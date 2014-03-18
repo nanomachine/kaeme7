@@ -31,6 +31,7 @@
 								<th>Dirección</th>
 								<!--th>Title</th-->			  
 								<th>Tipo</th>
+								<th>Tipo de Reporte</th>
 								<th>Prioridad</th>
 								<th>Estado</th>
 								<th>Fecha reportado</th>
@@ -48,6 +49,8 @@
 								<td><%= problem.address %></td>
 								<!--td><%= problem.title %></td-->
 								<td><%= problem.get_prob_type %></td>
+								<% @rep = problem.report_type %>
+								<td><%= @rep %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
 								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
@@ -81,6 +84,7 @@
 								<th>Dirección</th>
 								<!--th>Title</th-->			  
 								<th>Tipo</th>
+								<th>Tipo de Reporte</th>
 								<th>Prioridad</th>
 								<th>Estado</th>
 								<th>Fecha reportado</th>
@@ -97,6 +101,7 @@
 								<td><%= problem.address %></td>
 								<!--td><%= problem.title %></td-->
 								<td><%= problem.get_prob_type %></td>
+								<td><%= problem.report_type %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
 								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
@@ -187,6 +192,15 @@
 						<%= f.select :ptype, [["Hueco", 1], ["Tubería de agua", 2], ["Tendido eléctrico", 3], 
 						["Luminaria", 4], ["Escombros", 5], ["Vandalismo", 6], ["Alcantarillado", 7], 
 						["Otro", 8]] %>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="focusedInput">*Tipo de Reporte</label>
+				<div class="controls">
+					<div class="input-xlarge focused" id="focusedInput" type="text">
+						<%= f.text_field :report_type_id %>
 					</div>
 				</div>
 			</div>
