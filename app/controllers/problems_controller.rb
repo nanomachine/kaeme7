@@ -43,10 +43,10 @@ class ProblemsController < ApplicationController
    #puts @geocoded
 
 # This is to create the association for the report_type
-    if ReportType.exists?(@problem.report_type_id)
-      @report_type = ReportType.find(@problem.report_type_id)
-      @problem.report_type =  @report_type
-    end
+    #if ReportType.exists?(@problem.report_type_id)
+    #  @report_type = ReportType.find(@problem.report_type_id)
+    #  @problem.report_type =  @report_type
+    #end
 
 #When report is first created, its status is initially Unassigned, hence it is set to 1
     @problem.status = 1

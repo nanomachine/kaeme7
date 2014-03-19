@@ -49,8 +49,7 @@
 								<td><%= problem.address %></td>
 								<!--td><%= problem.title %></td-->
 								<td><%= problem.get_prob_type %></td>
-								<% @rep = problem.report_type %>
-								<td><%= @rep %></td>
+								<td><%= problem.report_type.name	 %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
 								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
@@ -200,7 +199,7 @@
 				<label class="control-label" for="focusedInput">*Tipo de Reporte</label>
 				<div class="controls">
 					<div class="input-xlarge focused" id="focusedInput" type="text">
-						<%= f.text_field :report_type_id %>
+						<%= f.select :report_type, ReportType.all.collect{|r| [r.name, r.id] } %>
 					</div>
 				</div>
 			</div>
