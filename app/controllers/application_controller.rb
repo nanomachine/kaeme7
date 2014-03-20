@@ -51,6 +51,6 @@ class ApplicationController < ActionController::Base
 
     gon.u_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='1'").count
     gon.a_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='2'").count
-    gon.r_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='75' AND status='3'").count
+    gon.r_manhole = Problem.find_by_sql("SELECT * FROM problems WHERE ptype='7' AND status='3'").count
   end
 end

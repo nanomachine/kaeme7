@@ -11,11 +11,11 @@ class ProblemsController < ApplicationController
     @json = @problem.to_gmaps4rails do |problem, marker|
       marker.infowindow render_to_string(:partial => "/problems/report_infowindow", :locals => { :problem => problem})
       marker.picture({
-                :picture => "/assets/markers/#{problem.ptype}.png",
+                :picture => @problem.report_type.avatar,
                 :width   => 32,
                 :height  => 35
                  })
-      marker.title   "##{problem.id}#{problem.get_prob_type}"
+      marker.title   "##{problem.id}#{problem.report_type.name}"
       marker.json({ :id => problem.id})
     end
   end
@@ -108,11 +108,11 @@ class ProblemsController < ApplicationController
       @json = Problem.all.to_gmaps4rails do |problem, marker|
       marker.infowindow render_to_string(:partial => "/problems/map_infowindow", :locals => { :object => problem})
       marker.picture({
-                :picture => "/assets/markers/#{problem.ptype}.png",
+                :picture => problem.report_type.avatar,
                 :width   => 32,
                 :height  => 35
                  })
-      marker.title   "##{problem.id} - #{problem.get_prob_type}"
+      marker.title   "##{problem.id} - #{problem.report_type.name}"
       marker.json({ :id => problem.id})
     end
   end

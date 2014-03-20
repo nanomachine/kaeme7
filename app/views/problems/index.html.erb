@@ -30,7 +30,7 @@
 								<th>Foto</th>
 								<th>Dirección</th>
 								<!--th>Title</th-->			  
-								<th>Tipo</th>
+								<!--th>Tipo</th-->
 								<th>Tipo de Reporte</th>
 								<th>Prioridad</th>
 								<th>Estado</th>
@@ -48,7 +48,7 @@
 								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
 								<td><%= problem.address %></td>
 								<!--td><%= problem.title %></td-->
-								<td><%= problem.get_prob_type %></td>
+								<!--td><%= problem.get_prob_type %></td-->
 								<td><%= problem.report_type.name	 %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
@@ -82,7 +82,7 @@
 								<th>Foto</th>
 								<th>Dirección</th>
 								<!--th>Title</th-->			  
-								<th>Tipo</th>
+								<!--th>Tipo</th-->
 								<th>Tipo de Reporte</th>
 								<th>Prioridad</th>
 								<th>Estado</th>
@@ -99,7 +99,7 @@
 								<td><%= link_to image_tag(problem.avatar.url(:thumb)), problem %> </td>
 								<td><%= problem.address %></td>
 								<!--td><%= problem.title %></td-->
-								<td><%= problem.get_prob_type %></td>
+								<!--td><%= problem.get_prob_type %></td-->
 								<td><%= problem.report_type %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
@@ -184,7 +184,7 @@
 				</div>
 			</div>
 
-			<div class="control-group">
+			<!--div class="control-group">
 				<label class="control-label" for="focusedInput">*Tipo</label>
 				<div class="controls">
 					<div class="input-xlarge focused" id="focusedInput" type="text">
@@ -193,7 +193,7 @@
 						["Otro", 8]] %>
 					</div>
 				</div>
-			</div>
+			</div-->
 
 			<div class="control-group">
 				<label class="control-label" for="focusedInput">*Tipo de Reporte</label>
