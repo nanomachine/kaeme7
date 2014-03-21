@@ -57,18 +57,18 @@ class ProblemsController < ApplicationController
 #When report is first created, its status is initially Unassigned, hence it is set to 1
     @problem.status = 1
     if @problem.save
-      flash[:success] = "Report saved"
+      flash[:success] = "Reporte guardado."
       #@lists.problems.create(attributes={"list_id" =>3, "problem_id" => @problem.id})
       redirect_to @problem
     else
-      flash[:error] = 'Incomplete information, report not created'
+      flash[:error] = 'El reporte no fue creado.'
       redirect_to problems_url
     end
   end
 
   def destroy
     Problem.find(params[:id]).destroy
-    flash[:success] = "Report deleted."
+    flash[:success] = "Reporte descartado."
     redirect_to problems_url
   end
 
@@ -81,10 +81,10 @@ class ProblemsController < ApplicationController
   def update
     @problem = Problem.find(params[:id])
     if @problem.update_attributes(params[:problem])
-      flash[:success] = "Report updated"
+      flash[:success] = "Reporte actualizado."
       redirect_to @problem
     else
-      flash[:error] = "Report update error"
+      flash[:error] = "Error al actualizar el reporte."
       redirect_to @problem
     end
   end
@@ -93,7 +93,7 @@ class ProblemsController < ApplicationController
     @problem = Problem.find(params[:id])
     @comment = Comment.build_from( @problem, current_user.id, params[:comment][:body] )
     @comment.save!
-    flash[:notice] = "Comment added!"
+    flash[:notice] = "Comentario agregado!"
     redirect_to :action => :show, :id => @problem
   end
 
@@ -103,9 +103,9 @@ class ProblemsController < ApplicationController
 
       if current_user.id == @comment.user_id
           @comment.destroy
-          flash[:notice] = "Comment deleted!"
+          flash[:notice] = "Comentario descartado!"
       else
-          flash[:notice] = "Sorry, you can't delete this comment"
+          flash[:notice] = "Usted no tiene los privilegios para descartar este comentario."
       end
       redirect_to :action => :show, :id => @problem
   end
