@@ -38,6 +38,13 @@ class ProblemsController < ApplicationController
     if !@problem.user_id
       @problem.user_id = current_user.id
     end
+    
+
+  #If problem.report_type == nil
+  #Then we have to assign the report type here
+  #This is for when the report is coming from the mobile app
+
+
 #Geocoding addresses to coordinates does not work well in Puerto Rico hence its implementationwill be postponed or abandoned
    #@geocoded = Gmaps4rails.geocode(@problem.address)
    #puts @geocoded
