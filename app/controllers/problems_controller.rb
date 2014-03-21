@@ -44,7 +44,6 @@ class ProblemsController < ApplicationController
   #Then we have to assign the report type here
   #This is for when the report is coming from the mobile app
 
-
 #Geocoding addresses to coordinates does not work well in Puerto Rico hence its implementationwill be postponed or abandoned
    #@geocoded = Gmaps4rails.geocode(@problem.address)
    #puts @geocoded
