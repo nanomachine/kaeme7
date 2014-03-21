@@ -54,7 +54,7 @@ wb.add_worksheet(name: 'Resumen de Lista') do |sheet|
 	if !@list.problems.empty?
 	    @list.problems.each do |p|
 
-		    sheet.add_row [p.id, p.description, p.address.to_s + ", " + p.municipality.to_s, p.latitude, p.longitude, p.get_prob_type, p.get_prob_priority, p.get_prob_status, p.created_at.strftime("%b. %d %Y @ %T"), p.get_owner_name ], :style => [cent_field, field, field, field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field]
+		    sheet.add_row [p.id, p.description, p.address.to_s + ", " + p.municipality.to_s, p.latitude, p.longitude, p.report_type.name, p.get_prob_priority, p.get_prob_status, p.created_at.strftime("%b. %d %Y @ %T"), p.get_owner_name ], :style => [cent_field, field, field, field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field, cent_field]
 	    end
 	end
 end
