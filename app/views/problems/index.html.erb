@@ -49,7 +49,7 @@
 								<td><%= problem.address %></td>
 								<!--td><%= problem.title %></td-->
 								<!--td><%= problem.get_prob_type %></td-->
-								<td><%= problem.report_type %></td>
+								<td><%= problem.report_type.name %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
 								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
@@ -100,7 +100,7 @@
 								<td><%= problem.address %></td>
 								<!--td><%= problem.title %></td-->
 								<!--td><%= problem.get_prob_type %></td-->
-								<td><%= problem.report_type %></td>
+								<td><%= problem.report_type.name %></td>
 								<td><%= problem.get_prob_priority %></td>
 								<td><%= problem.get_prob_status %></td>
 								<td class="center"><%= problem.created_at.strftime(" %b.%d %Y") %></td>
