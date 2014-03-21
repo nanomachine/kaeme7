@@ -199,7 +199,7 @@
 				<label class="control-label" for="focusedInput">*Tipo de Reporte</label>
 				<div class="controls">
 					<div class="input-xlarge focused" id="focusedInput" type="text">
-						<%= f.select :report_type, ReportType.all.collect{|r| [r.name, r.id] } %>
+						<%= f.select :report_type_id, ReportType.all.collect{|r| [r.name, r.id] } %>
 					</div>
 				</div>
 			</div>
